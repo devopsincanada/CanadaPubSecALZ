@@ -17,7 +17,7 @@ var roleName = 'Custom - Log Analytics - Read Only for VM Insights'
 var roleDescription = 'Read only access to Log Analytics for VM Insights.'
 
 // Telemetry - Azure customer usage attribution
-// Reference:  https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution
+// Reference:  https://learn.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution
 var telemetry = json(loadTextContent('../config/telemetry.json'))
 module telemetryCustomerUsageAttribution '../azresources/telemetry/customer-usage-attribution-management-group.bicep' = if (telemetry.customerUsageAttribution.enabled) {
   name: 'pid-${telemetry.customerUsageAttribution.modules.roles}-lavminsightsreadonly'
@@ -34,7 +34,7 @@ resource roleDefn 'Microsoft.Authorization/roleDefinitions@2018-01-01-preview' =
         actions: [
           'Microsoft.operationalinsights/workspaces/features/generateMap/read'
           'Microsoft.operationalinsights/workspaces/features/servergroups/members/read'
-          'Microsoft.operationalinsights/workspaces/features/clientgroups/memebers/read'
+          'Microsoft.operationalinsights/workspaces/features/clientgroups/members/read'
           'Microsoft.operationalinsights/workspaces/features/machineGroups/read'
           'Microsoft.OperationalInsights/workspaces/query/VMBoundPort/read'
           'Microsoft.OperationalInsights/workspaces/query/VMComputer/read'
